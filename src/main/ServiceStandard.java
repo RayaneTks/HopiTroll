@@ -1,3 +1,5 @@
+package main;
+
 /**
 
  Service médical standard.

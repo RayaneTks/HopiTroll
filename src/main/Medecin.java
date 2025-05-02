@@ -1,3 +1,5 @@
+package main;
+
 /**
 
  Représente un médecin de l'hôpital.

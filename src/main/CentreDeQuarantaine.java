@@ -1,3 +1,5 @@
+package main;
+
 /**
 
  Centre de quarantaine pour créatures contagieuses.

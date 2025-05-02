@@ -1,3 +1,5 @@
+package main;
+
 /**
 
  Crypte pour créatures régénérantes.

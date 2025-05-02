@@ -1,3 +1,5 @@
+package main;
+
 /**
 
  Représente une maladie affectant une créature.
@@ -7,6 +9,9 @@ public class Maladie {
     private String nomAbrege;
     private int niveauActuel;
     private int niveauMax;
+
+    public Maladie(String grippe, String grp, int i, int i1) {
+    }
 
     /**
 
@@ -31,4 +36,9 @@ public class Maladie {
      @return true si létale, sinon false.
      */
     public boolean estLetale() { return false; }
+
+
+    public int getNiveauActuel() {
+        return niveauActuel;
+    }
 }

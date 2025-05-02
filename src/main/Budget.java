@@ -1,3 +1,5 @@
+package main;
+
 /**
 
  Enumération des niveaux de budget possibles pour un service médical.

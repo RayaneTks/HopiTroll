@@ -1,3 +1,5 @@
+package main;
+
 /**
 
  Enumération des types de créatures gérés par l'hôpital.
