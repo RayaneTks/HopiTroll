@@ -1,0 +1,135 @@
+@startuml
+' ===================== Enums ==========================
+enum Budget {
+  INEXISTANT
+  MEDIOCRE
+  INSUFFISANT
+  FAIBLE
+}
+
+enum TypeCreature {
+  ELFE
+  NAIN
+  ORQUE
+  HOMMEBETE
+  ZOMBIE
+  VAMPIRE
+  LYCANTHROPE
+  REPTILIEN
+}
+
+' ===================== Maladie ========================
+class Maladie {
+  - nomComplet : String
+  - nomAbrege : String
+  - niveauActuel : int
+  - niveauMax : int
+  + augmenterNiveau()
+  + diminuerNiveau()
+  + estLetale() : boolean
+}
+
+' ===================== Creature =======================
+abstract class Creature {
+  - nomComplet : String
+  - sexe : String
+  - poids : double
+  - taille : double
+  - age : int
+  - moral : int
+  - maladies : List<Maladie>
+  + attendre()
+  + hurler()
+  + sEmporter()
+  + tomberMalade(m : Maladie)
+  + etreSoigne()
+  + trepasser()
+}
+
+class Elfe extends Creature {
+  + demoraliser()
+}
+class Nain extends Creature {
+  + demoraliser()
+}
+class Orque extends Creature {
+  + contaminer()
+}
+class HommeBete extends Creature {
+  + contaminer()
+}
+class Zombie extends Creature {
+  + regenerer()
+}
+class Vampire extends Creature {
+  + demoraliser()
+  + contaminer()
+  + regenerer()
+}
+class Lycanthrope extends Creature {
+  + contaminer()
+}
+class Reptilien extends Creature {
+  + demoraliser()
+}
+
+Creature "1" o-- "*" Maladie
+
+' ===================== ServiceMedical ==================
+abstract class ServiceMedical {
+  - nom : String
+  - superficie : double
+  - capaciteMax : int
+  - creatures : List<Creature>
+  - budget : Budget
+  - typeCreature : TypeCreature
+  + afficherInfos()
+  + ajouterCreature(c : Creature)
+  + enleverCreature(c : Creature)
+  + soignerCreatures()
+  + reviserBudget()
+}
+
+class ServiceStandard extends ServiceMedical
+
+class CentreDeQuarantaine extends ServiceMedical {
+  - isolation : boolean
+  + reviserBudget()
+}
+
+class Crypte extends ServiceMedical {
+  - ventilation : String
+  - temperature : double
+  + reviserBudget()
+}
+
+ServiceMedical "1" o-- "*" Creature
+
+' ===================== Medecin =========================
+class Medecin {
+  - nom : String
+  - sexe : String
+  - age : int
+  - typeCreature : TypeCreature
+  + examiner(service : ServiceMedical)
+  + soigner(service : ServiceMedical)
+  + reviserBudget(service : ServiceMedical)
+  + transferer(creature : Creature, src : ServiceMedical, dest : ServiceMedical)
+}
+
+' ===================== HopitalFantastique ==============
+class HopitalFantastique {
+  - nom : String
+  - nbMaxServices : int
+  - services : List<ServiceMedical>
+  - medecins : List<Medecin>
+  + afficherNbCreatures()
+  + afficherCreaturesParService()
+  + simulation()
+  + passerMainUtilisateur()
+  + demarrerThreads()
+}
+
+HopitalFantastique "1" o-- "*" ServiceMedical
+HopitalFantastique "1" o-- "*" Medecin
+@enduml
