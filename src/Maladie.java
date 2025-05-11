@@ -8,6 +8,10 @@ public class Maladie {
     private int niveauActuel;
     private int niveauMax;
 
+
+    public String getNomComplet() {
+        return nomComplet;
+    }
     /**
 
      Incrémente le niveau de la maladie.
