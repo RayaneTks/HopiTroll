@@ -1,3 +1,4 @@
+package Class;
 /**
 
  Enumération des niveaux de budget possibles pour un service médical.
